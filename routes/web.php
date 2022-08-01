@@ -1,5 +1,6 @@
 <?php
-
+//use App\Http\Controllers\CompanyController;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +12,15 @@
 |
 */
 
+//Route::get('/', 'CompanyController@index');
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

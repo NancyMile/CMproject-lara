@@ -13,7 +13,12 @@
                         <p class="opacity-60">
                             <strong>Created: </strong>{{$company->created_at->diffForHumans()}}
                         </p>
-                        <a href="{{route('companies.edit', $company)}}" class="btn-link ml-auto">Edit</a>
+                        <a href="{{route('companies.edit', $company)}}" class="btn btn-success ml-auto">Edit</a>
+                        <form action="{{route('companies.destroy',$company)}}" method="POST">
+                            @method('delete')
+                            @csrf
+                            <button type="submit" class="btn btn-danger ml-4" onclick="return confirm('Are you sure?')">Delete<button>
+                        </form>
                     </div>    
                 
                     <div class="my-6 p-6 bg-white border-b border-grey-200 shadow-sm sm:rounded-lg">

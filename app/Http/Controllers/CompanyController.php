@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class CompanyController extends Controller
 {
@@ -44,6 +45,7 @@ class CompanyController extends Controller
         ]);
 
         Company::create([
+            'uuid' => Str::uuid(),
             'name' => $request->name,
             'email' => $request->email,
             'logo' => $request->logo,
@@ -60,9 +62,10 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($uuid)
     {
-        //
+        $company = Company::where('uuid',$uuid)->firstorFail();
+        return view('companies.show')->with('company',$company);
     }
 
     /**

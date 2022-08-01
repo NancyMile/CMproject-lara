@@ -17,8 +17,9 @@ class EmployeesTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        for ($i = 1; $i <=3; $i++) {
+        for ($i = 1; $i <=12; $i++) {
             DB::table('employees')->insert([
+                'uuid' => $faker->uuid(),
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
                 'company_id' => Company::all()->random()->id,

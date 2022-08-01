@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\Company;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
@@ -62,9 +63,9 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($uuid)
+    public function show(Company $company)
     {
-        $company = Company::where('uuid',$uuid)->firstorFail();
+        //$company = Company::where('uuid',$uuid)->firstorFail();
         return view('companies.show')->with('company',$company);
     }
 
@@ -74,9 +75,10 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Company $company)
     {
-        //
+        //$company = Company::where('uuid',$uuid)->firstorFail();
+        return view('companies.edit')->with('company',$company);
     }
 
     /**
@@ -86,9 +88,24 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Company $company)
     {
-        //
+        //dd($request);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required:rfc,dns',
+            'website' => 'required' //URL
+        ]);
+
+        $company->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'logo' => $request->logo,
+            'website' => $request->website,
+            'updated_at' => now()
+        ]);
+
+        return redirect()->route('companies.show', $company);
     }
 
     /**

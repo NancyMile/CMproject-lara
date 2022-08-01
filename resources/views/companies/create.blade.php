@@ -24,7 +24,7 @@
                         @error('website')
                         <div class="text-red-680 text-sm">{{$message}}</div>
                         @enderror
-                        <button name="submit">Save</button>
+                        <button type="submit" class="btn btn-success ml-4" >Save</button>
                     </form>
                 </div>
             </div>

@@ -1,7 +1,8 @@
 <?php
-//use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
-/*
+use App\Http\Controllers;
+
+/*s
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -14,13 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/', 'CompanyController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-//Route::get('/home', 'HomeController@index')->name('home');
-
+//authentication routes
 Auth::routes();
+Route::resource('/', CompanyController::class)->middleware(['auth']);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/companies', CompanyController::class)->middleware(['auth']);
+//companies routes
+//Route::get('/', 'CompanyController@index');

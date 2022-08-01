@@ -15,7 +15,7 @@
                     @forelse($companies as $company)
                     <div class="my-6 p-6 bg-white border-b border-grey-200 shadow-sm sm:rounded-lg">
                         <h2 class="font-bold text-2x">
-                        <a href="{{ route('companies.show',$company->uuid)}}"> {{$company->name}} </a>
+                        <a href="{{ route('companies.show',$company)}}"> {{$company->name}} </a>
                         </h2>
                         <p class="mt-2">
                             {{$company->email}}     

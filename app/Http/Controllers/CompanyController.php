@@ -44,8 +44,8 @@ class CompanyController extends Controller
         //'logo' => ['required',Rule::dimensions()->width(100)->height(100),],
         $request->validate([
             'name' => 'required',
-            'email' => 'required:rfc,dns',
-            'website' => 'required' //URL
+            'email' => 'required|email:rfc,dns',
+            'website' => 'required|url' //URL
         ]);
 
         Company::create([
@@ -99,8 +99,8 @@ class CompanyController extends Controller
         //dd($request);
         $request->validate([
             'name' => 'required',
-            'email' => 'required:rfc,dns',
-            'website' => 'required' //URL
+            'email' => 'required|email:rfc,dns',
+            'website' => 'required|url' //URL
         ]);
 
         $company->update([

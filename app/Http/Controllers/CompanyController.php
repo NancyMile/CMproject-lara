@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Models\Company;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Models\Company;
+use App\Mail\CompanyEmails;
 
 class CompanyController extends Controller
 {
@@ -54,6 +57,9 @@ class CompanyController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        
+        Mail::send(new CompanyEmails());
         return redirect()->route('companies.index');
     }
 

@@ -39,7 +39,7 @@
                   <span class="username">
                     <a href="{{$company->website}}">{{$company->name}}</a>
                   </span>
-                  <span class="description">Edited  - {{$company->created_at->diffForHumans()}}</span>
+                  <span class="description">Edited  - {{$company->updated_at->diffForHumans()}}</span>
                 </div>
                 <!-- /.user-block -->
                 <p>

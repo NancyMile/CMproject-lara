@@ -33,7 +33,7 @@ class CompanyEmails extends Mailable
     // }
 
     public function build(Request $request){
-        return $this->from('admin@mailtrap.com')
+        return $this->from('admin@admin.com')
                     ->to($request->email)
                     ->subject('New company created!')
                     ->markdown('mails.email_notification')

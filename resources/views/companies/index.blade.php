@@ -36,10 +36,6 @@
                 <i class="fas fa-ellipsis-v"></i>
                 <i class="fas fa-ellipsis-v"></i>
             </span>
-            <div  class="icheck-primary d-inline ml-2">
-                <input type="checkbox" value="" name="todo6" id="todoCheck6">
-                <label for="todoCheck6"></label>
-            </div>
             <span class="text"><a href="{{ route('companies.show',$company)}}"> {{$company->name}}</span>
             <small class="badge badge-secondary"><i class="far fa-clock"></i> {{$company->website}}</small>
             <div class="tools">

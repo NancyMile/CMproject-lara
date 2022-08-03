@@ -22,3 +22,4 @@ Route::resource('/', CompanyController::class)->middleware(['auth']);
 Route::resource('/companies', CompanyController::class)->middleware(['auth']);
 //companies routes
 //Route::get('/', 'CompanyController@index');
+Route::resource('/employees', EmployeeController::class)->middleware(['auth']);

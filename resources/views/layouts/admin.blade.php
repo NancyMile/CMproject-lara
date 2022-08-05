@@ -3,8 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CM-Project</title>
+  <title>@yield('title')</title>
   <link rel="icon" type="image/x-icon" href="{{asset('dist/img/icons.png')}}"/>
+  <meta name="description" content="CM-Project">
+  <meta name="author" content="Nancy S">
+  <meta name="author" content="keywords" content="php , CM-Project">
+  <meta name="csrf-token" content="{{  csrf_token() }}">
 
   <!-- Google Font: Source Sans Pro
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -26,6 +30,7 @@
   <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+  @stack('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -97,7 +102,6 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
 <!-- jQuery -->
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -132,5 +136,6 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+@stack('js')
 </body>
 </html>

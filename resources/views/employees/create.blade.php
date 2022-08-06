@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title','Create Employee')
 @section('content')
 
 <div class="card card-primary">
@@ -31,10 +31,15 @@
     <div class="col-sm-6">
         <!-- select -->
         <div class="form-group">
-        <label>Select Company</label>
-        <select name="company_id"class="form-control">
-            <option value="4">option 4</option>
-        </select>
+            <label>Select Company</label>
+            <select name="company_id"class="form-control">
+                <option value=""> Select Company</option>
+                @forelse($companies as $company)
+                    <option value="{{$company->id}}">{{$company->name}}</option>
+                    @empty
+                    <option>No records yet.</option>
+                @endforelse
+            </select>
         </div>
     </div>
 

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title','Employee Details')
 @section('content')
  <!-- Main content -->
  <section class="content">
@@ -24,26 +24,26 @@
         <div class="row">
           <div class="col-12">
             <h4>Recent Activity</h4>
+            {{-- dd($employee) --}}
               <div class="post">
                 <div class="user-block">
                   <img class="img-circle img-bordered-sm" src="../../dist/img/avatar2.png" alt="user image">
                   <span class="username">
-                    {{$employee->first_name}} {{$employee->last_name}}
-                  </span>
-                  <span class="description">Edited  - {{$employee->created_at->diffForHumans()}}</span>
-                </div>
-                <!-- /.user-block -->
-                <p>
-                  <strong>Email</strong> {{$employee->email}}</br>
-                  <strong>Pone</strong> {{$employee->phone}}</br>
-                  <strong>Company</strong> {{$employee->name}}</br>
-                  
-                  Lorem ipsum represents a long-held tradition for designers,
-                  typographers and the like. Some people hate it and argue for
-                  its demise, but others ignore.
-</p>
+                      {{$employee->first_name}} {{$employee->last_name}}
+                    </span>
+                    <span class="description">Edited  - {{$employee->created_at->diffForHumans()}}</span>
+                  </div>
+                  <!-- /.user-block -->
+                  <p>
+                    <strong>Email</strong> {{$employee->email}}</br>
+                    <strong>Pone</strong> {{$employee->phone}}</br>
+                    <strong>Company</strong> {{$employee->company->name}}</br>
+                    Lorem ipsum represents a long-held tradition for designers,
+                    typographers and the like. Some people hate it and argue for
+                    its demise, but others ignore.
+                  </p>
               </div>
-          </div>
+            </div>
         </div>
       </div>
   </div>

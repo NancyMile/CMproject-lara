@@ -9,9 +9,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use App\Models\Company;
 use Illuminate\Support\Facades\DB;
-
-
-
+use Illuminate\Support\Facades\Session;
 
 class EmployeeController extends Controller
 {
@@ -22,22 +20,6 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        // $employees = DB::table('employees')
-        //     ->join('companies', 'companies.id', '=', 'employees.company_id')
-        //     ->select('employees.*', 'companies.name')
-        //     ->get()->paginate(3);
-
-        // Student::where('id', 1)->update([
-        //     'email' => 'johndoe@gmail.com'
-        //     ]);
-
-
-        // $employees = DB::table('employees')
-        //     ->join('companies', 'employees.company_id', '=', 'companies.id')
-        //     ->select('employees.*', 'companies.name')->paginate(10);
-        // $employees = json_decode( json_encode($employees), true);
-
-            //dd($employees);
         $employees = Employee::where('created_at','like','%202%')->paginate(10);
         return view('employees.index')->with('employees',$employees);
     }
@@ -49,7 +31,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employees.create');
+        $companies = Company::all();
+        return view('employees.create')->with('companies',$companies);
     }
 
     /**
@@ -60,6 +43,7 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
@@ -78,7 +62,8 @@ class EmployeeController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
-       return redirect()->route('employees.index');
+        Session::flash('success','The record was created!');
+        return redirect()->route('employees.index');
     }
 
     /**
@@ -128,8 +113,9 @@ class EmployeeController extends Controller
             'phone' => $request->phone,
             'updated_at' => now()
         ]);
-
-        return redirect()->route('employees.show', $employee);
+        Session::flash('success','The record was edited!');
+        return redirect()->route('employees.index');
+       // return redirect()->route('employees.show', $employee);
 
     }
 

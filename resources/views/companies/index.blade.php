@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title','Companies List')
 @section('content')
 <!-- Content Header (Page header) -->
 <div class="content-header">
@@ -7,6 +7,9 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0">Dashboard</h1>
+            @if (Session::has('success'))
+                <div class="alert alert-success">{{ Session::get('success') }}</div>
+            @endif
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

@@ -23,7 +23,7 @@ class CompanyTableSeeder extends Seeder
                 'name' => $faker->company,
                 'email' => $faker->email,
                 //'logo' => $faker->image(storage_path($storage), 100, 100, null, false),
-                'logo' =>$faker->image('storage/app/public/images', 400, 300, null, false),
+                'logo' =>$faker->image('storage/app/public/images', 100, 100, null, false),
                 'website' => $faker->url,
                 'created_at'=>$faker->dateTimeBetween($startDate = '-24 month',$endDate = 'now'),
                 'updated_at'=>$faker->dateTimeBetween($startDate = '-3 day',$endDate = 'now')
